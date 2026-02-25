@@ -3,12 +3,12 @@ set -uo pipefail
 rust() {
 	cargo "$@" &> "logs/${@: -1}.log"
 }
-bin=./target/debug/calc
+bin=$PWD/target/debug/calc
 rm -rf logs
 mkdir -p logs
 rust +nightly fmt
 rust clippy
 rust check
 rust build
-$bin "$@"
+"$bin" "$@"
 find logs -empty -delete
