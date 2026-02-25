@@ -5,7 +5,7 @@ use {
 pub fn run(state: &mut State) {
 	let mut buffer = String::new();
 	let mut out = stdout();
-	let _ = out.write(b"> ").unwrap();
+	out.write(b"> ").unwrap();
 	out.flush().unwrap();
 	stdin().read_line(&mut buffer).unwrap();
 	for line in buffer.lines() {
