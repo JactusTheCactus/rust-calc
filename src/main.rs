@@ -7,7 +7,7 @@ fn main() {
 		running: true,
 		re: RegexBuilder::new(&format!(
 			"(?<number>{})|(?<sign>{})|(?<open>{})|(?<close>{})",
-			r"\d+", r"//|<<|>>|[+-/*^%]", r"\(", r"\)"
+			r"\d+(?:\.\d+)?", r"//|<<|>>|[+-/*^%]", r"\(", r"\)"
 		))
 		.build()
 		.expect("Invalid Regex"),
