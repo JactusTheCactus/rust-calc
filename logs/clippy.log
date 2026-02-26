@@ -1,140 +1,17 @@
-    Checking calc v0.1.0 (/home/devin/Projects/rust/calc)
-warning: variable `node` is assigned to, but never used
-  --> src/parse.rs:40:13
-   |
-40 |                 let mut node;
-   |                         ^^^^
-   |
-   = note: consider using `_node` instead
-   = note: `#[warn(unused_variables)]` on by default
-
-warning: value assigned to `node` is never read
-  --> src/parse.rs:42:13
-   |
-42 |                     "+" => node = Node::new(Add),
-   |                            ^^^^
-   |
-   = help: maybe it is overwritten before being read?
-   = note: `#[warn(unused_assignments)]` on by default
-
-warning: value assigned to `node` is never read
-  --> src/parse.rs:43:13
-   |
-43 |                     "-" => node = Node::new(Sub),
-   |                            ^^^^
-   |
-   = help: maybe it is overwritten before being read?
-
-warning: value assigned to `node` is never read
-  --> src/parse.rs:44:13
-   |
-44 |                     "*" => node = Node::new(Mul),
-   |                            ^^^^
-   |
-   = help: maybe it is overwritten before being read?
-
-warning: value assigned to `node` is never read
-  --> src/parse.rs:45:13
-   |
-45 |                     "/" => node = Node::new(Div),
-   |                            ^^^^
-   |
-   = help: maybe it is overwritten before being read?
-
-warning: value assigned to `node` is never read
-  --> src/parse.rs:46:13
-   |
-46 |                     "%" => node = Node::new(Mod),
-   |                            ^^^^
-   |
-   = help: maybe it is overwritten before being read?
-
-warning: value assigned to `node` is never read
-  --> src/parse.rs:47:13
-   |
-47 |                     "^" => node = Node::new(Exp),
-   |                            ^^^^
-   |
-   = help: maybe it is overwritten before being read?
-
-warning: value assigned to `node` is never read
-  --> src/parse.rs:48:14
-   |
-48 |                     "//" => node = Node::new(Root),
-   |                             ^^^^
-   |
-   = help: maybe it is overwritten before being read?
-
-warning: value assigned to `node` is never read
-  --> src/parse.rs:49:14
-   |
-49 |                     "<<" => node = Node::new(LShift),
-   |                             ^^^^
-   |
-   = help: maybe it is overwritten before being read?
-
-warning: value assigned to `node` is never read
-  --> src/parse.rs:50:14
-   |
-50 |                     ">>" => node = Node::new(RShift),
-   |                             ^^^^
-   |
-   = help: maybe it is overwritten before being read?
-
-warning: variable does not need to be mutable
-  --> src/parse.rs:40:9
-   |
-40 |                 let mut node;
-   |                     ----^^^^
-   |                     |
-   |                     help: remove this `mut`
-   |
-   = note: `#[warn(unused_mut)]` on by default
-
-warning: field `0` is never read
-  --> src/parse.rs:18:6
-   |
-18 |     Num(f64),
-   |     --- ^^^
-   |     |
-   |     field in this variant
-   |
-   = note: `Type` has derived impls for the traits `Clone` and `Debug`, but these are intentionally ignored during dead code analysis
-   = note: `#[warn(dead_code)]` on by default
-help: consider changing the field to be of unit type to suppress this warning while preserving the field numbering, or remove the field
-   |
-18 -     Num(f64),
-18 +     Num(()),
-   |
-
 warning: this `if` statement can be collapsed
-  --> src/parse.rs:61:5
-   |
-61 | /                 if let Some(node) = stack.pop() {
-62 | |                     if let Some(last) = stack.last_mut() {
-63 | |                         last.push(node)
-64 | |                     }
-65 | |                 }
+  --> src/parse.rs:66:5
+66 | /                 if let Some(node) = stack.pop() {
+67 | |                     if let Some(last) = stack.last_mut() {
+68 | |                         last.push(node)
+69 | |                     }
+70 | |                 }
    | |_________________^
-   |
    = help: for further information visit https://rust-lang.github.io/rust-clippy/master/index.html#collapsible_if
    = note: `#[warn(clippy::collapsible_if)]` on by default
 help: collapse nested if block
-   |
-61 ~                 if let Some(node) = stack.pop()
-62 ~                     && let Some(last) = stack.last_mut() {
-63 |                         last.push(node)
-64 ~                     }
-   |
-
-warning: length comparison to zero
-  --> src/parse.rs:71:3
-   |
-71 |         stack.len() > 0,
-   |         ^^^^^^^^^^^^^^^ help: using `!is_empty` is clearer and more explicit: `!stack.is_empty()`
-   |
-   = help: for further information visit https://rust-lang.github.io/rust-clippy/master/index.html#len_zero
-   = note: `#[warn(clippy::len_zero)]` on by default
-
-warning: `calc` (lib) generated 14 warnings (run `cargo clippy --fix --lib -p calc` to apply 3 suggestions)
-    Finished `dev` profile [unoptimized + debuginfo] target(s) in 0.14s
+66 ~                 if let Some(node) = stack.pop()
+67 ~                     && let Some(last) = stack.last_mut() {
+68 |                         last.push(node)
+69 ~                     }
+warning: `calc` (lib) generated 13 warnings (run `cargo clippy --fix --lib -p calc` to apply 2 suggestions)
+    Finished `dev` profile [unoptimized + debuginfo] target(s) in 0.05s

@@ -73,7 +73,7 @@ pub(super) fn parse(tokens: Vec<Token>) -> Node {
 	}
 	// println!("Stack: {stack:#?}");
 	assert!(
-		stack.len() > 0,
+		!stack.is_empty(),
 		"The stack is too small! ({len})",
 		len = stack.len()
 	);

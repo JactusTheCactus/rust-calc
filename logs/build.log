@@ -1,4 +1,3 @@
-   Compiling calc v0.1.0 (/home/devin/Projects/rust/calc)
 warning: variable `node` is assigned to, but never used
   --> src/parse.rs:40:13
    |
@@ -9,75 +8,75 @@ warning: variable `node` is assigned to, but never used
    = note: `#[warn(unused_variables)]` on by default
 
 warning: value assigned to `node` is never read
-  --> src/parse.rs:42:13
+  --> src/parse.rs:45:14
    |
-42 |                     "+" => node = Node::new(Add),
-   |                            ^^^^
+45 |                         "+" => node = Node::new(Add),
+   |                                ^^^^
    |
    = help: maybe it is overwritten before being read?
    = note: `#[warn(unused_assignments)]` on by default
 
 warning: value assigned to `node` is never read
-  --> src/parse.rs:43:13
+  --> src/parse.rs:46:14
    |
-43 |                     "-" => node = Node::new(Sub),
-   |                            ^^^^
-   |
-   = help: maybe it is overwritten before being read?
-
-warning: value assigned to `node` is never read
-  --> src/parse.rs:44:13
-   |
-44 |                     "*" => node = Node::new(Mul),
-   |                            ^^^^
+46 |                         "-" => node = Node::new(Sub),
+   |                                ^^^^
    |
    = help: maybe it is overwritten before being read?
 
 warning: value assigned to `node` is never read
-  --> src/parse.rs:45:13
+  --> src/parse.rs:47:14
    |
-45 |                     "/" => node = Node::new(Div),
-   |                            ^^^^
-   |
-   = help: maybe it is overwritten before being read?
-
-warning: value assigned to `node` is never read
-  --> src/parse.rs:46:13
-   |
-46 |                     "%" => node = Node::new(Mod),
-   |                            ^^^^
-   |
-   = help: maybe it is overwritten before being read?
-
-warning: value assigned to `node` is never read
-  --> src/parse.rs:47:13
-   |
-47 |                     "^" => node = Node::new(Exp),
-   |                            ^^^^
+47 |                         "*" => node = Node::new(Mul),
+   |                                ^^^^
    |
    = help: maybe it is overwritten before being read?
 
 warning: value assigned to `node` is never read
   --> src/parse.rs:48:14
    |
-48 |                     "//" => node = Node::new(Root),
-   |                             ^^^^
+48 |                         "/" => node = Node::new(Div),
+   |                                ^^^^
    |
    = help: maybe it is overwritten before being read?
 
 warning: value assigned to `node` is never read
   --> src/parse.rs:49:14
    |
-49 |                     "<<" => node = Node::new(LShift),
-   |                             ^^^^
+49 |                         "%" => node = Node::new(Mod),
+   |                                ^^^^
    |
    = help: maybe it is overwritten before being read?
 
 warning: value assigned to `node` is never read
   --> src/parse.rs:50:14
    |
-50 |                     ">>" => node = Node::new(RShift),
-   |                             ^^^^
+50 |                         "^" => node = Node::new(Exp),
+   |                                ^^^^
+   |
+   = help: maybe it is overwritten before being read?
+
+warning: value assigned to `node` is never read
+  --> src/parse.rs:51:15
+   |
+51 |                         "//" => node = Node::new(Root),
+   |                                 ^^^^
+   |
+   = help: maybe it is overwritten before being read?
+
+warning: value assigned to `node` is never read
+  --> src/parse.rs:52:15
+   |
+52 |                         "<<" => node = Node::new(LShift),
+   |                                 ^^^^
+   |
+   = help: maybe it is overwritten before being read?
+
+warning: value assigned to `node` is never read
+  --> src/parse.rs:53:15
+   |
+53 |                         ">>" => node = Node::new(RShift),
+   |                                 ^^^^
    |
    = help: maybe it is overwritten before being read?
 
@@ -108,4 +107,4 @@ help: consider changing the field to be of unit type to suppress this warning wh
    |
 
 warning: `calc` (lib) generated 12 warnings (run `cargo fix --lib -p calc` to apply 1 suggestion)
-    Finished `dev` profile [unoptimized + debuginfo] target(s) in 0.29s
+    Finished `dev` profile [unoptimized + debuginfo] target(s) in 0.01s
