@@ -1,5 +1,5 @@
 #[derive(Debug)]
-pub enum El {
+pub enum Token {
 	Number(i32),
 	Sign(String),
 	Open,
