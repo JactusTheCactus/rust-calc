@@ -10,5 +10,5 @@ rust +nightly fmt
 rust clippy
 rust check
 rust build
-"$bin" "$@"
 find logs -empty -delete
+"$bin" "$@"

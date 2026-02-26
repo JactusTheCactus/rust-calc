@@ -1,10 +1,16 @@
 use {calc::state::State, regex::RegexBuilder};
 fn main() {
 	State::new(
-		RegexBuilder::new(&format!(
-			"(?<number>{})|(?<sign>{})|(?<open>{})|(?<close>{})",
-			r"\d+(?:\.\d+)?", r"//|<<|>>|[+-/*^%]", r"\(", r"\)"
-		))
+		RegexBuilder::new(
+			&[
+				("number", r"\d+(?:\.\d+)?(?:e\d+)?"),
+				("sign", r"//|<<|>>|[+-/*^%]"),
+				("open", r"\("),
+				("close", r"\)"),
+			]
+			.map(|(l, r)| format!("(?<{l}>{r})"))
+			.join("|"),
+		)
 		.build()
 		.expect("Invalid Regex"),
 		"Help",

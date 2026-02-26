@@ -1,2 +1,111 @@
    Compiling calc v0.1.0 (/home/devin/Projects/rust/calc)
-    Finished `dev` profile [unoptimized + debuginfo] target(s) in 0.22s
+warning: variable `node` is assigned to, but never used
+  --> src/parse.rs:40:13
+   |
+40 |                 let mut node;
+   |                         ^^^^
+   |
+   = note: consider using `_node` instead
+   = note: `#[warn(unused_variables)]` on by default
+
+warning: value assigned to `node` is never read
+  --> src/parse.rs:42:13
+   |
+42 |                     "+" => node = Node::new(Add),
+   |                            ^^^^
+   |
+   = help: maybe it is overwritten before being read?
+   = note: `#[warn(unused_assignments)]` on by default
+
+warning: value assigned to `node` is never read
+  --> src/parse.rs:43:13
+   |
+43 |                     "-" => node = Node::new(Sub),
+   |                            ^^^^
+   |
+   = help: maybe it is overwritten before being read?
+
+warning: value assigned to `node` is never read
+  --> src/parse.rs:44:13
+   |
+44 |                     "*" => node = Node::new(Mul),
+   |                            ^^^^
+   |
+   = help: maybe it is overwritten before being read?
+
+warning: value assigned to `node` is never read
+  --> src/parse.rs:45:13
+   |
+45 |                     "/" => node = Node::new(Div),
+   |                            ^^^^
+   |
+   = help: maybe it is overwritten before being read?
+
+warning: value assigned to `node` is never read
+  --> src/parse.rs:46:13
+   |
+46 |                     "%" => node = Node::new(Mod),
+   |                            ^^^^
+   |
+   = help: maybe it is overwritten before being read?
+
+warning: value assigned to `node` is never read
+  --> src/parse.rs:47:13
+   |
+47 |                     "^" => node = Node::new(Exp),
+   |                            ^^^^
+   |
+   = help: maybe it is overwritten before being read?
+
+warning: value assigned to `node` is never read
+  --> src/parse.rs:48:14
+   |
+48 |                     "//" => node = Node::new(Root),
+   |                             ^^^^
+   |
+   = help: maybe it is overwritten before being read?
+
+warning: value assigned to `node` is never read
+  --> src/parse.rs:49:14
+   |
+49 |                     "<<" => node = Node::new(LShift),
+   |                             ^^^^
+   |
+   = help: maybe it is overwritten before being read?
+
+warning: value assigned to `node` is never read
+  --> src/parse.rs:50:14
+   |
+50 |                     ">>" => node = Node::new(RShift),
+   |                             ^^^^
+   |
+   = help: maybe it is overwritten before being read?
+
+warning: variable does not need to be mutable
+  --> src/parse.rs:40:9
+   |
+40 |                 let mut node;
+   |                     ----^^^^
+   |                     |
+   |                     help: remove this `mut`
+   |
+   = note: `#[warn(unused_mut)]` on by default
+
+warning: field `0` is never read
+  --> src/parse.rs:18:6
+   |
+18 |     Num(f64),
+   |     --- ^^^
+   |     |
+   |     field in this variant
+   |
+   = note: `Type` has derived impls for the traits `Clone` and `Debug`, but these are intentionally ignored during dead code analysis
+   = note: `#[warn(dead_code)]` on by default
+help: consider changing the field to be of unit type to suppress this warning while preserving the field numbering, or remove the field
+   |
+18 -     Num(f64),
+18 +     Num(()),
+   |
+
+warning: `calc` (lib) generated 12 warnings (run `cargo fix --lib -p calc` to apply 1 suggestion)
+    Finished `dev` profile [unoptimized + debuginfo] target(s) in 0.29s

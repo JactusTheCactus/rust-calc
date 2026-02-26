@@ -1,13 +1,12 @@
 use {
 	crate::{
-		state::{new::new, run::run, tokenise::tokenise},
-		token::Token,
+		new::new,
+		parse::{Node, parse},
+		run::run,
+		tokenise::{token::Token, tokenise},
 	},
 	regex::Regex,
 };
-pub mod new;
-pub mod run;
-pub mod tokenise;
 pub struct State {
 	pub running: bool,
 	pub re: Regex,
@@ -22,5 +21,8 @@ impl State {
 	}
 	pub fn tokenise(&self, line: &str) -> Vec<Token> {
 		tokenise(self, line)
+	}
+	pub fn parse(&self, tokens: Vec<Token>) -> Node {
+		parse(tokens)
 	}
 }
