@@ -6,15 +6,15 @@ use crate::{
 enum Type {
 	Tree,
 	Group,
-	Root,
-	LShift,
-	RShift,
+	// Root,
+	// LShift,
+	// RShift,
 	Add,
-	Sub,
-	Div,
-	Mul,
-	Exp,
-	Mod,
+	// Sub,
+	// Div,
+	// Mul,
+	// Exp,
+	// Mod,
 	Num(f64),
 }
 #[derive(Debug, Clone)]
@@ -37,20 +37,20 @@ pub(super) fn parse(tokens: Vec<Token>) -> Result<Node, ()> {
 				}
 			}
 			Sign(s) => {
-				let mut node;
+				let _node;
 				let s = s.as_str();
 				if ["+", "-", "*", "/", "%", "^", "//", "<<", ">>"].contains(&s)
 				{
 					match s {
-						"+" => node = Node::new(Add),
-						"-" => node = Node::new(Sub),
-						"*" => node = Node::new(Mul),
-						"/" => node = Node::new(Div),
-						"%" => node = Node::new(Mod),
-						"^" => node = Node::new(Exp),
-						"//" => node = Node::new(Root),
-						"<<" => node = Node::new(LShift),
-						">>" => node = Node::new(RShift),
+						"+" => _node = Node::new(Add),
+						// "-" => _node = Node::new(Sub),
+						// "*" => _node = Node::new(Mul),
+						// "/" => _node = Node::new(Div),
+						// "%" => _node = Node::new(Mod),
+						// "^" => _node = Node::new(Exp),
+						// "//" => _node = Node::new(Root),
+						// "<<" => _node = Node::new(LShift),
+						// ">>" => _node = Node::new(RShift),
 						_ => unreachable!(),
 					}
 				} else {

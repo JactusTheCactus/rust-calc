@@ -8,8 +8,9 @@ rust() {
 	cargo "$@" &> "$log"
 	echo "$log"
 }
-rm -rf logs
-mkdir -p logs
+dirs=(logs bin)
+rm -rf "${dirs[@]}"
+mkdir -p "${dirs[@]}"
 rust +nightly fmt > /dev/null
 clippy="$(rust clippy)"
 rust check > /dev/null
@@ -19,4 +20,4 @@ fi
 grep -vxFf "$build" "$clippy" > "$clippy.1"
 mv "$clippy.1" "$clippy"
 find logs -empty -delete
-"$PWD/target/debug/calc" "$@"
+cp "$PWD/target/debug/calc" bin
