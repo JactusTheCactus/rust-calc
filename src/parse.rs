@@ -27,7 +27,7 @@ impl Node {
 		self.1.push(node)
 	}
 }
-pub(super) fn parse(tokens: Vec<Token>) -> Node {
+pub(super) fn parse(tokens: Vec<Token>) -> Result<Node, ()> {
 	let mut stack: Vec<Node> = vec![Node::new(Tree)];
 	for t in tokens {
 		match t {
@@ -51,9 +51,7 @@ pub(super) fn parse(tokens: Vec<Token>) -> Node {
 						"//" => node = Node::new(Root),
 						"<<" => node = Node::new(LShift),
 						">>" => node = Node::new(RShift),
-						_ => {
-							unreachable!()
-						}
+						_ => unreachable!(),
 					}
 				} else {
 					panic!("'{s}' is an invalid sign!")
@@ -80,5 +78,5 @@ pub(super) fn parse(tokens: Vec<Token>) -> Node {
 	let tree = stack.last().unwrap();
 	println!("Tree: {tree:#?}");
 	assert!(stack.len() == 1);
-	tree.clone()
+	Ok(tree.clone())
 }

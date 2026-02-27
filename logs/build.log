@@ -1,3 +1,4 @@
+   Compiling calc v0.1.0 (/home/devin/Projects/rust/calc)
 warning: variable `node` is assigned to, but never used
   --> src/parse.rs:40:13
    |
@@ -107,4 +108,4 @@ help: consider changing the field to be of unit type to suppress this warning wh
    |
 
 warning: `calc` (lib) generated 12 warnings (run `cargo fix --lib -p calc` to apply 1 suggestion)
-    Finished `dev` profile [unoptimized + debuginfo] target(s) in 0.01s
+    Finished `dev` profile [unoptimized + debuginfo] target(s) in 0.63s

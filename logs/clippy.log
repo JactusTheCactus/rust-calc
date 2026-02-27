@@ -1,17 +1,55 @@
+    Checking calc v0.1.0 (/home/devin/Projects/rust/calc)
 warning: this `if` statement can be collapsed
-  --> src/parse.rs:66:5
-66 | /                 if let Some(node) = stack.pop() {
-67 | |                     if let Some(last) = stack.last_mut() {
-68 | |                         last.push(node)
-69 | |                     }
-70 | |                 }
+  --> src/parse.rs:64:5
+64 | /                 if let Some(node) = stack.pop() {
+65 | |                     if let Some(last) = stack.last_mut() {
+66 | |                         last.push(node)
+67 | |                     }
+68 | |                 }
    | |_________________^
    = help: for further information visit https://rust-lang.github.io/rust-clippy/master/index.html#collapsible_if
    = note: `#[warn(clippy::collapsible_if)]` on by default
 help: collapse nested if block
-66 ~                 if let Some(node) = stack.pop()
-67 ~                     && let Some(last) = stack.last_mut() {
-68 |                         last.push(node)
-69 ~                     }
-warning: `calc` (lib) generated 13 warnings (run `cargo clippy --fix --lib -p calc` to apply 2 suggestions)
-    Finished `dev` profile [unoptimized + debuginfo] target(s) in 0.05s
+64 ~                 if let Some(node) = stack.pop()
+65 ~                     && let Some(last) = stack.last_mut() {
+66 |                         last.push(node)
+67 ~                     }
+warning: this `if` statement can be collapsed
+  --> src/run.rs:17:6
+17 | /                     if let Ok(tokens) = state.tokenise(line) {
+18 | |                         if let Ok(_tree) = state.parse(tokens) {}
+19 | |                     }
+   | |_____________________^
+   = help: for further information visit https://rust-lang.github.io/rust-clippy/master/index.html#collapsible_if
+help: collapse nested if block
+17 ~                     if let Ok(tokens) = state.tokenise(line)
+18 ~                         && let Ok(_tree) = state.parse(tokens) {}
+warning: this returns a `Result<_, ()>`
+  --> src/state.rs:19:2
+19 |     pub fn run(&mut self) -> Result<(), ()> {
+   |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   = help: use a custom `Error` type instead
+   = help: for further information visit https://rust-lang.github.io/rust-clippy/master/index.html#result_unit_err
+   = note: `#[warn(clippy::result_unit_err)]` on by default
+warning: this returns a `Result<_, ()>`
+  --> src/state.rs:22:2
+22 |     pub fn tokenise(&self, line: &str) -> Result<Vec<Token>, ()> {
+   |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   = help: use a custom `Error` type instead
+   = help: for further information visit https://rust-lang.github.io/rust-clippy/master/index.html#result_unit_err
+warning: this returns a `Result<_, ()>`
+  --> src/state.rs:25:2
+25 |     pub fn parse(&self, tokens: Vec<Token>) -> Result<Node, ()> {
+   |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   = help: use a custom `Error` type instead
+   = help: for further information visit https://rust-lang.github.io/rust-clippy/master/index.html#result_unit_err
+warning: this returns a `Result<_, ()>`
+ --> src/tokenise/mod.rs:6:1
+  |
+6 | pub fn tokenise(state: &State, line: &str) -> Result<Vec<Token>, ()> {
+  | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  |
+  = help: use a custom `Error` type instead
+  = help: for further information visit https://rust-lang.github.io/rust-clippy/master/index.html#result_unit_err
+warning: `calc` (lib) generated 18 warnings (run `cargo clippy --fix --lib -p calc` to apply 3 suggestions)
+    Finished `dev` profile [unoptimized + debuginfo] target(s) in 0.21s

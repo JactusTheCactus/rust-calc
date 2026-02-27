@@ -2,7 +2,7 @@ use {
 	crate::state::State,
 	std::io::{Write, stdin, stdout},
 };
-pub(super) fn run(state: &mut State) {
+pub(super) fn run(state: &mut State) -> Result<(), ()> {
 	loop {
 		let mut buffer = String::new();
 		let mut out = stdout();
@@ -14,8 +14,9 @@ pub(super) fn run(state: &mut State) {
 				"h" | "help" => println!("{:?}", state.help),
 				"q" | "quit" => state.running = false,
 				_ => {
-					let tokens = state.tokenise(line);
-					let _tree = state.parse(tokens);
+					if let Ok(tokens) = state.tokenise(line) {
+						if let Ok(_tree) = state.parse(tokens) {}
+					}
 				}
 			}
 		}
@@ -23,4 +24,5 @@ pub(super) fn run(state: &mut State) {
 			break;
 		}
 	}
+	Ok(())
 }

@@ -1,5 +1,5 @@
 use {calc::state::State, regex::RegexBuilder};
-fn main() {
+fn main() -> Result<(), ()> {
 	State::new(
 		RegexBuilder::new(
 			&[
@@ -15,5 +15,5 @@ fn main() {
 		.expect("Invalid Regex"),
 		"Help",
 	)
-	.run();
+	.run()
 }

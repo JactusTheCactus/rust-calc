@@ -3,7 +3,7 @@ use crate::{
 	tokenise::token::{NullToken, Token},
 };
 pub mod token;
-pub fn tokenise(state: &State, line: &str) -> Vec<Token> {
+pub fn tokenise(state: &State, line: &str) -> Result<Vec<Token>, ()> {
 	let mut elements = vec![];
 	for str in line.split_whitespace() {
 		for cap in state.re.captures_iter(str) {
@@ -22,11 +22,11 @@ pub fn tokenise(state: &State, line: &str) -> Vec<Token> {
 			})
 		}
 	}
-	elements
+	Ok(elements
 		.iter()
 		.filter_map(|e| match e {
 			NullToken::Some(t) => Some(t.clone()),
 			NullToken::None => None,
 		})
-		.collect()
+		.collect())
 }

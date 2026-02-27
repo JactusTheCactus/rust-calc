@@ -16,13 +16,13 @@ impl State {
 	pub fn new(re: Regex, help: &str) -> Self {
 		new(re, help)
 	}
-	pub fn run(&mut self) {
+	pub fn run(&mut self) -> Result<(), ()> {
 		run(self)
 	}
-	pub fn tokenise(&self, line: &str) -> Vec<Token> {
+	pub fn tokenise(&self, line: &str) -> Result<Vec<Token>, ()> {
 		tokenise(self, line)
 	}
-	pub fn parse(&self, tokens: Vec<Token>) -> Node {
+	pub fn parse(&self, tokens: Vec<Token>) -> Result<Node, ()> {
 		parse(tokens)
 	}
 }
