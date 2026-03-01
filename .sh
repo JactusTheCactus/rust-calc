@@ -12,9 +12,10 @@ dirs=(logs bin)
 rm -rf "${dirs[@]}"
 mkdir -p "${dirs[@]}"
 rust +nightly fmt > /dev/null
-clippy="$(rust clippy)"
+clippy=$(rust clippy)
 rust check > /dev/null
-if build="$(rust build)"
+build=$(rust build)
+if $?
 	then rm "$(log check)"
 fi
 grep -vxFf "$build" "$clippy" > "$clippy.1"
